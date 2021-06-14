@@ -20,12 +20,19 @@ namespace EmployeeManagement.api.Controllers
             this.employeeRepository = employeeRepository;
         }
 
-        [HttpGet]
-        public async Task<ActionResult> GetEmployees()
+        [HttpGet("{search}")]
+        public async Task<ActionResult<IEnumerable<Employee>>> Search(string name, Gender? gender)
         {
             try
             {
-                return Ok(await employeeRepository.GetEmployees());
+                var result = await employeeRepository.Search(name, gender);
+
+                if (result.Any())
+                {
+                    return Ok(result);
+                }
+
+                return NotFound();
             }
             catch (Exception)
             {
