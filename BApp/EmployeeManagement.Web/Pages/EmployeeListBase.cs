@@ -11,12 +11,12 @@ namespace EmployeeManagement.Web.Pages
     public class EmployeeListBase : ComponentBase
     {
         [Inject]
-        public IEmployeeService IEmployeeService { get; set }
+        public IEmployeeService EmployeeService { get; set; }
         public IEnumerable<Employee> Employees { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            Employees = (await IEmployeeService.GetEmployees()).ToList();
+            Employees = (await EmployeeService.GetEmployees()).ToList();
         
         }    
     }
