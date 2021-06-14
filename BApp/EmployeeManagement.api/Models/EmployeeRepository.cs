@@ -33,12 +33,16 @@ namespace EmployeeManagement.api.Models
                 await appDbContext.SaveChangesAsync();
             }
         }
-        public async Task<IEnumerable<Employee>> GetEmployee(int employeeId)
+        public async Task<Employee> GetEmployee(int employeeId)
         {
-            var result = await appDbContext.Employees
+            return await appDbContext.Employees
+                //.Include(e => e.DepartmentId)
                 .FirstOrDefaultAsync(e => e.EmployeeId == employeeId);
-
-            return result;
+        }
+        public async Task<Employee> GetEmployeeByEmail(string email)
+        {
+            return await appDbContext.Employees
+                .FirstOrDefaultAsync(e => e.Email == email);
         }
         public async Task<IEnumerable<Employee>> GetEmployees()
         {
