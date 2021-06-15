@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using System.Net.Http.Json;
 
 
 namespace EmployeeManagement.Web.Services
@@ -16,6 +17,11 @@ namespace EmployeeManagement.Web.Services
         public EmployeeService(HttpClient httpClient)
         {
             this.httpClient = httpClient;
+        }
+
+        public async Task<Employee> GetEmployee(int id)
+        {
+            return await httpClient.GetJsonAsync<Employee>($"api/employees/{id}");
         }
 
         public async Task<IEnumerable<Employee>> GetEmployees()
