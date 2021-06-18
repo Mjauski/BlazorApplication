@@ -43,7 +43,7 @@ namespace EmployeeManagement.Web.Pages
 
         //protected void Mouse_Move(MouseEventArgs e)
         //{
-          //  Coordinates = $"X = {e.ClientX} Y = {e.ClientY}";
+        //  Coordinates = $"X = {e.ClientX} Y = {e.ClientY}";
         //}
-
+    }
 }
