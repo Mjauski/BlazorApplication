@@ -3,6 +3,7 @@ using EmployeeManagement.Models;
 using EmployeeManagement.Web.Models;
 using EmployeeManagement.Web.Services;
 using Microsoft.AspNetCore.Components;
+using PragimTech.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,26 +19,26 @@ namespace EmployeeManagement.Web.Pages
 
         public string PageHeader { get; set; }
 
-        protected async override Task OnInitializedAsync()
-        {
-            int.TryParse(Id, out int employeeId);
+        //protected async override Task OnInitializedAsync()
+        //{
+        //    int.TryParse(Id, out int employeeId);
 
-            if (employeeId != 0)
-            {
-                PageHeader = "Edit Employee";
-                Employee = await EmployeeService.GetEmployee(int.Parse(Id));
-            }
-            else
-            {
-                PageHeader = "Create Employee";
-                Employee = new Employee
-                {
-                    DepartmentId = 1,
-                    DateOfBirth = DateTime.Now,
-                    PhotoPath = "images/nophoto.jpg"
-                };
-            }
-        }
+        //    if (employeeId != 0)
+        //    {
+        //        PageHeader = "Edit Employee";
+        //        Employee = await EmployeeService.GetEmployee(int.Parse(Id));
+        //    }
+        //    else
+        //    {
+        //        PageHeader = "Create Employee";
+        //        Employee = new Employee
+        //        {
+        //            DepartmentId = 1,
+        //            DateOfBirth = DateTime.Now,
+        //            PhotoPath = "images/nophoto.jpg"
+        //        };
+        //    }
+        //}
         private Employee Employee { get; set; } = new Employee();
 
         public EditEmployeeModel EditEmployeeModel { get; set; } = new EditEmployeeModel();
@@ -108,7 +109,7 @@ namespace EmployeeManagement.Web.Pages
             }
         }
 
-        protected PragimTech.Components.ConfirmBase DeleteConfirmation { get; set; }
+        protected ConfirmBase DeleteConfirmation { get; set; }
 
         protected void Delete_Click()
         {

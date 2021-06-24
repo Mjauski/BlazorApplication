@@ -28,6 +28,8 @@ namespace EmployeeManagement.Web.Pages
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
+        protected PragimTech.Components.ConfirmBase DeleteConfirmation { get; set; }
+
         protected void Delete_Click()
         {
             DeleteConfirmation.Show();

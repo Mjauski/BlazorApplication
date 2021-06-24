@@ -9,10 +9,10 @@ namespace PragimTech.Components
     public class ConfirmBase : ComponentBase
     {
         protected bool ShowConfirmation { get; set; }
-        public void Show()
-        {
-            ShowConfirmation = true;
-        }
+        //public void Show()
+        //{
+        //    ShowConfirmation = true;
+        //}
 
         [Parameter]
         public string ConfirmationTitle { get; set; } = "Delete Confirmation";
